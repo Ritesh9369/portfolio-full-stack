@@ -8,37 +8,39 @@ import contactRoutes from "./routes/contactRoutes.js";
 dotenv.config();
 const app = express();
 
-// ================= CORS FIX (100% Working) =================
+// ================== CORS FIX — 100% WORKING ==================
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://portfolio-full-stack-silk.vercel.app"
+  "https://portfolio-full-stack-silk.vercel.app", // Frontend (Vercel)
+  "https://portfolio-full-stack-4lif.onrender.com" // Backend (Render)
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests without origin (like mobile apps / curl / postman)
-      if (!origin) return callback(null, true);
+      if (!origin) return callback(null, true); // Mobile/Postman allow
       if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error("Not allowed by CORS"));
+      return callback(new Error("❌ Not allowed by CORS: " + origin));
     },
+    methods: ["GET", "POST"],
     credentials: true
   })
 );
-// ===========================================================
+// =============================================================
 
+// Body Parser
 app.use(express.json());
 
-// DB connect
+// Connect to Database
 connectDB();
 
-// API routes
+// API Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
 
-// Default route
+// Default route (optional)
 app.get("/", (req, res) => res.send("Portfolio Backend Running 🚀"));
 
 // Server start
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
