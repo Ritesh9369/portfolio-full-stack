@@ -3,10 +3,10 @@ import nodemailer from "nodemailer";
 
 export const sendMessage = async (req, res) => {
   try {
-    // 1️⃣ Save message in MongoDB
-    await new Contact(req.body).save();
+    //  Save message in MongoDB
+    const savedMessage = await new Contact(req.body).save();
 
-    // 2️⃣ Email notification (when someone fills contact form)
+    //  Email notification
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -31,18 +31,18 @@ export const sendMessage = async (req, res) => {
       `
     });
 
-    res.json({ success: true, message: "Message saved & notification sent" });
+    return res.status(200).json({
+      success: true,
+      message: "Message saved & email sent successfully",
+      data: savedMessage
+    });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ success: false, message: "Error sending message" });
-  }
-};
+    console.error("Send message error:", err);
 
-export const getMessages = async (req, res) => {
-  try {
-    const data = await Contact.find().sort({ createdAt: -1 }); // Latest first
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ success: false, message: "Error loading messages" });
+    //  sabse important — response return kare
+    return res.status(500).json({
+      success: false,
+      message: "Email service error — Message saved but email not sent"
+    });
   }
 };
