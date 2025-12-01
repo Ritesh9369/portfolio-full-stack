@@ -1,12 +1,13 @@
 import Contact from "../models/Contact.js";
 import nodemailer from "nodemailer";
 
+// Send Message (Save + Email)
 export const sendMessage = async (req, res) => {
   try {
-    //  Save message in MongoDB
+    // 1) Save message in MongoDB
     const savedMessage = await new Contact(req.body).save();
 
-    //  Email notification
+    // 2) Send email notification
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -31,6 +32,7 @@ export const sendMessage = async (req, res) => {
       `
     });
 
+    // ⭐ Response bhejna zaroori hai (spinner stop + success toast)
     return res.status(200).json({
       success: true,
       message: "Message saved & email sent successfully",
@@ -39,10 +41,24 @@ export const sendMessage = async (req, res) => {
   } catch (err) {
     console.error("Send message error:", err);
 
-    //  sabse important — response return kare
+    // ⭐ Error ke time par bhi response dena zaroori (nahi to spinner infinite chalega)
     return res.status(500).json({
       success: false,
-      message: "Email service error — Message saved but email not sent"
+      message: "Email service error — message saved but email not sent"
+    });
+  }
+};
+
+// Get All Messages (Admin panel ke liye)
+export const getMessages = async (req, res) => {
+  try {
+    const data = await Contact.find().sort({ createdAt: -1 }); // Latest first
+    return res.json(data);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      success: false,
+      message: "Error loading messages"
     });
   }
 };
