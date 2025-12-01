@@ -7,19 +7,34 @@ import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// =============== CORS FIX ===============
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://portfolio-full-stack-silk.vercel.app" // your Vercel frontend URL
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  })
+);
+// =======================================
+
 app.use(express.json());
 
 // DB connect
 connectDB();
 
-// routes
+// API routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
 
-// default route
+// Default route
 app.get("/", (req, res) => res.send("Portfolio Backend Running 🚀"));
 
-app.listen(process.env.PORT, () =>
-  console.log(`Server running on port ${process.env.PORT}`)
-);
+// Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
