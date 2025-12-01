@@ -12,7 +12,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://portfolio-full-stack-silk.vercel.app", // Frontend (Vercel)
-  "https://portfolio-full-stack-4lif.onrender.com" // Backend (Render)
+  "https://portfolio-full-stack-41if.onrender.com" // Backend (Render)
 ];
 
 app.use(
