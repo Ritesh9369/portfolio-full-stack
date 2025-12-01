@@ -1,0 +1,202 @@
+/* ================= NAVBAR BASE ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(10, 12, 25, 0.55);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 9999999;
+  isolation: isolate;
+}
+
+/* ================= WRAPPER ================= */
+.nav-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  height: 80px;
+  padding: 0 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= LOGO ================= */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.nav-logo-main {
+  font-size: 1.85rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #60a5ff, #a855f7, #ec6ff7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-logo-sub {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: -4px;
+}
+
+/* ================= MENU LINKS ================= */
+.nav-menu {
+  display: flex;
+  gap: 1.7rem;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #dbeafe;
+  opacity: 0.75;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.nav-menu a.active,
+.nav-menu a:hover {
+  opacity: 1;
+  color: #00eaff;
+  text-shadow: 0 0 12px #00eaff;
+}
+
+/* ================= DESKTOP RESUME BUTTON ================= */
+.resume-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: 0.25s;
+}
+
+.resume-btn:hover {
+  border-color: #00eaff;
+  box-shadow: 0 0 18px rgba(0, 225, 255, 0.4);
+}
+
+/* ================= HAMBURGER ================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  width: 30px;
+  height: 24px;
+  background: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.nav-toggle span {
+  width: 100%;
+  height: 3px;
+  border-radius: 10px;
+  background: white;
+  transition: 0.45s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: 0 0 7px rgba(255,255,255,0.4);
+}
+
+/* OPEN STATE */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+  background: #00eaff;
+  box-shadow: 0 0 12px #00eaff;
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+  background: #ff2efb;
+  box-shadow: 0 0 12px #ff2efb;
+}
+
+/* ================= MOBILE MENU ================= */
+@media (max-width: 950px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    height: 100vh;
+    width: 300px;
+
+    padding: 2.4rem 1.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.7rem;
+
+    background: rgba(6, 8, 18, 0.96);
+    backdrop-filter: blur(25px);
+    box-shadow: -4px 0 22px rgba(0, 255, 255, 0.18);
+
+    transition: all 0.45s ease;
+    opacity: 0;
+  }
+
+  .nav-menu.open {
+    right: 0;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-menu a {
+    font-size: 1.25rem;
+    padding: 0.35rem 0;
+  }
+
+  /* CLOSE BUTTON INSIDE MOBILE MENU */
+  .close-menu {
+    font-size: 1.9rem;
+    color: #e2e8f0;
+    background: none;
+    border: none;
+    align-self: flex-end;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .close-menu:hover {
+    color: #00eaff;
+    text-shadow: 0 0 14px #00eaff;
+  }
+
+  /* MOBILE SPECIAL RESUME BUTTON */
+  .nav-menu .resume-btn {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    text-align: center;
+
+    background: linear-gradient(120deg, #00eaff, #8b5cf6);
+    color: white !important;
+    border-radius: 16px;
+    border: none;
+
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    box-shadow: 0 0 20px rgba(0, 225, 255, 0.25),
+                0 0 28px rgba(140, 82, 255, 0.25);
+
+    transition: 0.3s ease;
+  }
+
+  .nav-menu .resume-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 225, 255, 0.45),
+                0 0 40px rgba(140, 82, 255, 0.45);
+  }
+}

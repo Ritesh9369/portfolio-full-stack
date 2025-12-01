@@ -1,0 +1,139 @@
+/* ===================== RESET ===================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ===================== BODY ===================== */
+body {
+  background: #080d1b;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===================== FLOATING BACKGROUND LIGHT ===================== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,225,255,0.17), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(140,82,255,0.22), transparent 65%);
+  filter: blur(100px);
+  opacity: 0.7;
+  z-index: -2;
+  animation: bgMove 25s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+  0% { transform: translate3d(-20px,-10px,0); }
+  100% { transform: translate3d(30px,20px,0); }
+}
+
+/* ===================== NEON GRID OVERLAY ===================== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(#ffffff05 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: -2;
+  animation: gridDrift 60s linear infinite;
+}
+
+@keyframes gridDrift {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-200px,-200px); }
+}
+
+/* ===================== MAIN SECTION FIX ===================== */
+/* ❗ Remove padding — only scroll offset needed */
+section {
+  scroll-margin-top: 110px;   /* navbar height+margin */
+}
+
+/* Hero section ko hi padding chahiye */
+main > section:first-child {
+  padding-top: 80px !important;
+}
+
+/* ===================== CONTENT CONTAINERS ===================== */
+.section {
+  max-width: 1150px;
+  margin: auto;
+  padding: 4.5rem 1.5rem;
+}
+
+/* ===================== HEADINGS ===================== */
+.section__title {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg,#60a5ff,#a855f7,#ec6ff7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.section__subtitle {
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+/* ===================== GLASS CARD ===================== */
+.card {
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,225,255,.5);
+  box-shadow: 0 0 25px rgba(0,225,255,.25);
+}
+
+/* ===================== BUTTONS ===================== */
+.btn-primary {
+  padding: .7rem 1.4rem;
+  border-radius: 30px;
+  background: linear-gradient(120deg,#00eaff,#7c3aed);
+  color: white;
+  border: none;
+  box-shadow: 0 0 20px rgba(0,225,255,.3);
+  transition: .25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0,225,255,.5);
+}
+
+.btn-outline {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: .6rem 1.2rem;
+  border-radius: 30px;
+  transition: .25s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(0,225,255,.4);
+}

@@ -1,0 +1,146 @@
+/* ===================== PROJECTS GRID ===================== */
+
+.projects-grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 1rem;
+}
+
+/* ===================== PROJECT CARD ===================== */
+
+.project-card {
+  padding: 1.6rem 1.5rem;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(140, 160, 255, 0.25);
+  backdrop-filter: blur(16px);
+  transition: 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle rotating glow border */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 225, 255, 0),
+    rgba(0, 225, 255, 0.28),
+    rgba(140, 120, 255, 0.35),
+    rgba(0, 225, 255, 0)
+  );
+  opacity: 0;
+  transition: 0.4s ease;
+  animation: spinGlow 9s linear infinite;
+  z-index: -1;
+}
+
+@keyframes spinGlow {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* card hover → lift + glow */
+.project-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 0 48px rgba(0, 200, 255, 0.32);
+  border-color: rgba(0, 225, 255, 0.65);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* ===================== TITLE AREA ===================== */
+
+.project-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  background: linear-gradient(90deg, #60a5ff, #a855f7);
+  
+  /* FIX */
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
+
+/* period text */
+.project-period {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* underline animation */
+.project-title-line {
+  height: 2px;
+  width: 55px;
+  background: linear-gradient(90deg, #00eaff, #8b5cf6);
+  margin: 0.4rem 0 0.9rem;
+  border-radius: 999px;
+  animation: lineSlide 3s infinite alternate ease-in-out;
+}
+
+@keyframes lineSlide {
+  0% { width: 38px; opacity: .7; }
+  100% { width: 75px; opacity: 1; }
+}
+
+/* ===================== DESCRIPTION ===================== */
+
+.project-desc {
+  font-size: 0.94rem;
+  opacity: 0.95;
+  margin-bottom: 0.6rem;
+}
+
+/* tech text */
+.project-stack {
+  font-size: 0.8rem;
+  opacity: 0.82;
+  margin-bottom: 0.9rem;
+}
+
+/* ===================== HIGHLIGHTS LIST ===================== */
+
+.project-list {
+  padding-left: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.project-list li {
+  margin-bottom: 0.32rem;
+  position: relative;
+  font-size: 0.88rem;
+}
+
+/* Glow bullet */
+.project-list li::before {
+  content: "•";
+  position: absolute;
+  left: -0.9rem;
+  top: 0;
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (min-width: 850px) {
+  .projects-grid {
+    gap: 1.8rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

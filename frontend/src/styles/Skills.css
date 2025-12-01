@@ -1,0 +1,80 @@
+/* ===================== GRID ===================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.6rem;
+}
+
+/* ===================== CARD BASE ===================== */
+.skill-card {
+  padding: 1.6rem;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(140, 160, 255, 0.28);
+  backdrop-filter: blur(16px);
+  text-align: center;
+  transition: 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Neon rotating border */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 225, 255, 0),
+    rgba(0, 225, 255, 0.28),
+    rgba(140, 120, 255, 0.35),
+    rgba(0, 225, 255, 0)
+  );
+  opacity: 0;
+  transition: 0.4s ease;
+  animation: skillsGlow 10s linear infinite;
+  z-index: -1;
+}
+
+@keyframes skillsGlow {
+  100% { transform: rotate(360deg); }
+}
+
+/* Hover Glow */
+.skill-card:hover {
+  transform: translateY(-7px) scale(1.02);
+  border-color: rgba(0,225,255,0.55);
+  box-shadow: 0 0 42px rgba(0,200,255,0.25);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* ===================== ICON ===================== */
+.skill-icon {
+  font-size: 2.3rem;
+  margin-bottom: 0.8rem;
+  animation: pulseIcon 2.3s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* ===================== TEXT ===================== */
+.skill-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+  background: linear-gradient(90deg, #60a5ff, #a855f7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.skill-desc {
+  font-size: 0.88rem;
+  opacity: 0.85;
+}

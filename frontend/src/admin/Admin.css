@@ -1,0 +1,104 @@
+/* Admin Login Page */
+.login-container {
+  max-width: 420px;
+  margin: 120px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 18px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #ffffff15;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.msg {
+  margin-top: 10px;
+}
+
+
+/* Dashboard Layout */
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+  color: white;
+}
+
+.admin-sidebar {
+  width: 230px;
+  background: #00000070;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.admin-sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.admin-sidebar a {
+  display: block;
+  margin: 15px 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Messages + Projects Tables */
+.table-box {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-box th,
+.table-box td {
+  padding: 10px;
+  border-bottom: 1px solid #ffffff40;
+}
+
+.table-box button {
+  padding: 6px 12px;
+  background: red;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

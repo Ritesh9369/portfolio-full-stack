@@ -1,0 +1,116 @@
+/* ============= FOOTER BASE ============= */
+.footer {
+  margin-top: 5rem;
+  padding: 2.8rem 1.3rem;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.4),
+    rgba(2, 6, 23, 0.85)
+  );
+
+  border-top: 1px solid rgba(140, 160, 255, 0.22);
+  backdrop-filter: blur(12px);
+}
+
+/* ============= FLOATING NEON ORBS ============= */
+.footer-orb {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: orbFloat 7s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+  top: -60px;
+  left: -40px;
+  background: #00eaff;
+}
+
+.orb-2 {
+  bottom: -60px;
+  right: -40px;
+  background: #a855f7;
+  animation-duration: 9s;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0,0) scale(1); }
+  100% { transform: translate(30px,-20px) scale(1.12); }
+}
+
+/* ============= CONTENT WRAPPER ============= */
+.footer__inner {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* ============= TITLE ============= */
+.footer__title {
+  font-size: 1.45rem;
+  font-weight: 700;
+
+  background: linear-gradient(90deg, #00eaff, #8b5cf6, #ff3fa4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: titleGlow 5s infinite ease;
+}
+
+@keyframes titleGlow {
+  0% { filter: brightness(0.85); }
+  50% { filter: brightness(1.5); }
+  100% { filter: brightness(0.85); }
+}
+
+/* ============= TAGLINE ============= */
+.footer__tagline {
+  margin: 0.6rem auto 1.3rem;
+  max-width: 500px;
+  opacity: 0.8;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ============= SOCIAL LINKS ============= */
+.footer__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.footer__socials a {
+  color: #c9d3ff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+.footer__socials a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px #00eaff;
+  transform: translateY(-2px);
+}
+
+/* ============= COPYRIGHT ============= */
+.footer__copy {
+  opacity: 0.65;
+  font-size: 0.82rem;
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 600px) {
+  .footer__title { font-size: 1.25rem; }
+  .footer__tagline { font-size: 0.85rem; }
+}

@@ -1,0 +1,41 @@
+.about-card {
+  padding: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  animation: floatCard 1.5s ease-out forwards;
+}
+
+@keyframes floatCard {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: .35rem .9rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(120,140,255,0.3);
+  border-radius: 999px;
+  font-size: .85rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-badge .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #22c55e, #16a34a);
+}
+
+.about-text {
+  margin-bottom: .9rem;
+}
+
+.about-skills {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
