@@ -14,9 +14,11 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:4173",
   "http://localhost:4174",
-  "https://portfolio-full-stack-silk.vercel.app", // Frontend (Vercel)
-  "https://portfolio-full-stack-41if.onrender.com" // Backend (Render)
+  "https://portfolio-full-stack-silk.vercel.app",
+  "https://portfolio-full-stack-3oz49fxkl-ritehs-chauhans-projects.vercel.app", // ⭐ ADD THIS
+  "https://portfolio-full-stack-41if.onrender.com"
 ];
+
 
 app.use(
   cors({
